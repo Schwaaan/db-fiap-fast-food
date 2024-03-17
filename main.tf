@@ -14,5 +14,6 @@ resource "aws_db_instance" "fourSixInstance" {
   instance_class       = "db.t3.micro"
   identifier           = "foursix"
   username             = "sa"
+  license_model        = "license-included"
   password             = "SenhaDoBanco(123)"
 }
