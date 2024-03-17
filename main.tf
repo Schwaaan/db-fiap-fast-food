@@ -13,6 +13,7 @@ resource "aws_db_instance" "FourSix" {
   engine_version       = "15.00.2070.41.v1"
   instance_class       = "db.t3.micro"
   name                 = "FourSix"
+  identifier          = "FourSix"
   username             = "sa"
   password             = "SenhaDoBanco(123)"
 }
