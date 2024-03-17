@@ -9,8 +9,8 @@ provider "aws" {
 resource "aws_db_instance" "fourSixInstance" {
   allocated_storage    = 20
   storage_type         = "gp2"
-  engine               = "sqlserver-se"
-  engine_version       = "16.00.4105.2.v1"
+  engine               = "sqlserver-ex"
+  engine_version       = "15.00.4153.1.v1"
   instance_class       = "db.t3.micro"
   identifier           = "foursix"
   username             = "sa"
