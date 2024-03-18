@@ -16,4 +16,5 @@ resource "aws_db_instance" "fourSixInstance" {
   username             = "sa"
   license_model        = "license-included"
   password             = "SenhaDoBanco(123)"
+  publicly_accessible  = true
 }
