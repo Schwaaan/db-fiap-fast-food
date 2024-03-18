@@ -1,5 +1,15 @@
 terraform {
-  required_version = ">= 0.12"
+  required_version = ">= 1.0.0"
+  required_providers {
+    ec = {
+      source  = "elastic/ec"
+      version = "0.4.0"
+    }
+    elasticstack = {
+      source = "elastic/elasticstack",
+      version = "0.3.3"
+    }
+  }
 }
 
 provider "aws" {
@@ -30,9 +40,19 @@ resource "aws_db_instance" "fourSixInstance" {
   instance_class       = "db.t3.micro"
   identifier           = "foursix"
   username             = "sa"
+  delete               = true
   license_model        = "license-included"
   password             = "SenhaDoBanco(123)"
   publicly_accessible  = true
   vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group.id]
 }
 
+resource "aws_elasticache_cluster" "example_redis" {
+  cluster_id           = "example-redis-cluster"
+  engine               = "redis"
+  node_type            = "cache.t2.micro"
+  num_cache_nodes      = 1
+  parameter_group_name = "default.redis7.0"
+  port                 = 6379
+  vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group.id]
+}
