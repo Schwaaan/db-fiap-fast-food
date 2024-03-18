@@ -41,6 +41,21 @@ resource "aws_security_group" "rds_sqlserver_security_group2" {
 #  vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group1.id]
 #}
 
+resource "aws_elasticache_parameter_group" "default" {
+  name   = "cache-params"
+  family = "redis2.8"
+
+  parameter {
+    name  = "activerehashing"
+    value = "yes"
+  }
+
+  parameter {
+    name  = "min-slaves-to-write"
+    value = "2"
+  }
+}
+
 resource "aws_elasticache_cluster" "example_redis" {
   cluster_id           = "example-redis-cluster"
   engine               = "redis"
@@ -49,4 +64,5 @@ resource "aws_elasticache_cluster" "example_redis" {
   parameter_group_name = "default.redis7.0"
   port                 = 6379
   security_group_ids   = [aws_security_group.rds_sqlserver_security_group2.id]
+  aws_elasticache_parameter_group = [aws_elasticache_parameter_group.default.id]
 }
