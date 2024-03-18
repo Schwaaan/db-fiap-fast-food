@@ -20,6 +20,18 @@ resource "aws_security_group" "rds_sqlserver_security_group" {
   tags = {
     Name = "rds_sqlserver_security_group"
   }
+
+  lifecycle {
+    prevent_destroy = true
+  }
+
+  settings {
+    target {
+      lifecycle {
+        create_before_destroy = true
+      }
+    }
+  }
 }
 
 resource "aws_db_instance" "fourSixInstance" {
