@@ -10,8 +10,6 @@ resource "aws_security_group" "rds_sqlserver_security_group" {
   name        = "rds_sqlserver_security_group"
   description = "Security group for RDS SQL Server instance"
 
-  vpc_id = aws_vpc.main.id
-
   ingress {
     from_port   = 1433 
     to_port     = 1433
@@ -37,3 +35,4 @@ resource "aws_db_instance" "fourSixInstance" {
   publicly_accessible  = true
   vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group.id]
 }
+
