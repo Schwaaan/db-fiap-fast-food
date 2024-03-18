@@ -6,8 +6,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_security_group" "rds_sqlserver_security_group" {
-  name        = "rds_sqlserver_security_group"
+resource "aws_security_group" "rds_sqlserver_security_group1" {
+  name        = "rds_sqlserver_security_group1"
   description = "Security group for RDS SQL Server instance"
 
   ingress {
@@ -18,20 +18,13 @@ resource "aws_security_group" "rds_sqlserver_security_group" {
   }
 
   tags = {
-    Name = "rds_sqlserver_security_group"
+    Name = "rds_sqlserver_security_group1"
   }
 
   lifecycle {
-    prevent_destroy = true
+    create_before_destroy = true
   }
 
-  settings {
-    target {
-      lifecycle {
-        create_before_destroy = true
-      }
-    }
-  }
 }
 
 resource "aws_db_instance" "fourSixInstance" {
