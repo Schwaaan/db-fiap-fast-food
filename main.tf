@@ -7,7 +7,7 @@ provider "aws" {
 }
 
 resource "aws_security_group" "rds_sqlserver_security_group2" {
-  name        = "rds_sqlserver_security_group1"
+  name        = "rds_sqlserver_security_group2"
   description = "Security group for RDS SQL Server instance"
 
   ingress {
