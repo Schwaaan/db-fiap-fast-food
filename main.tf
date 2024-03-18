@@ -17,8 +17,8 @@ resource "aws_elasticache_parameter_group" "redis" {
   }
 }
 
-resource "aws_security_group" "rds_sqlserver_security_group5" {
-  name        = "rds_sqlserver_security_group5"
+resource "aws_security_group" "rds_sqlserver_security_group6" {
+  name        = "rds_sqlserver_security_group6"
   description = "Security group for RDS SQL Server instance"
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "rds_sqlserver_security_group5" {
   }
 
   tags = {
-    Name = "rds_sqlserver_security_group5"
+    Name = "rds_sqlserver_security_group6"
   }
 
   lifecycle {
@@ -60,5 +60,5 @@ resource "aws_elasticache_cluster" "example_redis" {
   engine_version       = "6.x"
   parameter_group_name = aws_elasticache_parameter_group.redis.name
   port                 = 6379
-  security_group_ids   = [aws_security_group.rds_sqlserver_security_group5.id]
+  security_group_ids   = [aws_security_group.rds_sqlserver_security_group6.id]
 }
