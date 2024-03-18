@@ -30,7 +30,6 @@ resource "aws_db_instance" "fourSixInstance" {
   instance_class       = "db.t3.micro"
   identifier           = "foursix"
   username             = "sa"
-  delete               = true
   license_model        = "license-included"
   password             = "SenhaDoBanco(123)"
   publicly_accessible  = true
