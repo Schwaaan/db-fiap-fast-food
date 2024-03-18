@@ -6,8 +6,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_security_group" "rds_sqlserver_security_group4" {
-  name        = "rds_sqlserver_security_group4"
+resource "aws_security_group" "rds_sqlserver_security_group5" {
+  name        = "rds_sqlserver_security_group5"
   description = "Security group for RDS SQL Server instance"
 
   ingress {
@@ -18,7 +18,7 @@ resource "aws_security_group" "rds_sqlserver_security_group4" {
   }
 
   tags = {
-    Name = "rds_sqlserver_security_group4"
+    Name = "rds_sqlserver_security_group5"
   }
 
   lifecycle {
@@ -47,7 +47,7 @@ resource "aws_elasticache_cluster" "example_redis" {
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1
   engine_version       = "6.x"
-  parameter_group_name = "default.redis3.2"
+  parameter_group_name = "default.redis6"
   port                 = 6379
-  security_group_ids   = [aws_security_group.rds_sqlserver_security_group4.id]
+  security_group_ids   = [aws_security_group.rds_sqlserver_security_group5.id]
 }
