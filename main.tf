@@ -6,8 +6,8 @@ provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_elasticache_parameter_group" "redis2" {
-  name        = "redis-custom-parameters"
+resource "aws_elasticache_parameter_group" "redis3" {
+  name        = "redis-custom-parameters1"
   family      = "redis6.x"  
   description = "Custom Redis parameters"
 
@@ -17,8 +17,8 @@ resource "aws_elasticache_parameter_group" "redis2" {
   }
 }
 
-resource "aws_security_group" "rds_sqlserver_security_group7" {
-  name        = "rds_sqlserver_security_group7"
+resource "aws_security_group" "rds_sqlserver_security_group8" {
+  name        = "rds_sqlserver_security_group8"
   description = "Security group for RDS SQL Server instance"
 
   ingress {
@@ -29,7 +29,7 @@ resource "aws_security_group" "rds_sqlserver_security_group7" {
   }
 
   tags = {
-    Name = "rds_sqlserver_security_group7"
+    Name = "rds_sqlserver_security_group8"
   }
 
   lifecycle {
@@ -58,7 +58,7 @@ resource "aws_elasticache_cluster" "example_redis" {
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1
   engine_version       = "6.x"
-  parameter_group_name = aws_elasticache_parameter_group.redis2.name
+  parameter_group_name = aws_elasticache_parameter_group.redis3.name
   port                 = 6379
-  security_group_ids   = [aws_security_group.rds_sqlserver_security_group7.id]
+  security_group_ids   = [aws_security_group.rds_sqlserver_security_group8.id]
 }
