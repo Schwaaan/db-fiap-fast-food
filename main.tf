@@ -6,6 +6,17 @@ provider "aws" {
   region = "us-east-1"
 }
 
+resource "aws_elasticache_parameter_group" "redis" {
+  name        = "redis-custom-parameters"
+  family      = "redis6.x"  
+  description = "Custom Redis parameters"
+
+  parameter {
+    name  = "timeout"
+    value = "20"
+  }
+}
+
 resource "aws_security_group" "rds_sqlserver_security_group5" {
   name        = "rds_sqlserver_security_group5"
   description = "Security group for RDS SQL Server instance"
@@ -47,7 +58,7 @@ resource "aws_elasticache_cluster" "example_redis" {
   node_type            = "cache.t2.micro"
   num_cache_nodes      = 1
   engine_version       = "6.x"
-  parameter_group_name = "default.redis6"
+  parameter_group_name = aws_elasticache_parameter_group.redis.name
   port                 = 6379
   security_group_ids   = [aws_security_group.rds_sqlserver_security_group5.id]
 }
