@@ -43,5 +43,5 @@ resource "aws_elasticache_cluster" "example_redis" {
   num_cache_nodes      = 1
   parameter_group_name = "default.redis7.0"
   port                 = 6379
-  vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group.id]
+  security_group_ids   = [aws_security_group.rds_sqlserver_security_group.id]
 }
