@@ -38,19 +38,19 @@ resource "aws_security_group" "rds_sqlserver_security_group8" {
 
 }
 
-#resource "aws_db_instance" "fourSixInstance" {
-#  allocated_storage    = 20
-#  storage_type         = "gp2"
-#  engine               = "sqlserver-ex"
-#  engine_version       = "15.00.4153.1.v1"
-#  instance_class       = "db.t3.micro"
-#  identifier           = "foursix"
-#  username             = "sa"
-#  license_model        = "license-included"
-#  password             = "SenhaDoBanco(123)"
-#  publicly_accessible  = true
-#  vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group1.id]
-#}
+resource "aws_db_instance" "fourSixInstance" {
+  allocated_storage    = 20
+  storage_type         = "gp2"
+  engine               = "sqlserver-ex"
+  engine_version       = "15.00.4153.1.v1"
+  instance_class       = "db.t3.micro"
+  identifier           = "foursix"
+  username             = "sa"
+  license_model        = "license-included"
+  password             = "SenhaDoBanco(123)"
+  publicly_accessible  = true
+  vpc_security_group_ids = [aws_security_group.rds_sqlserver_security_group1.id]
+}
 
 resource "aws_elasticache_cluster" "example_redis" {
   cluster_id           = "example-redis-cluster"
